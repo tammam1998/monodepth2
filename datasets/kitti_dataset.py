@@ -21,12 +21,12 @@ class KITTIDataset(MonoDataset):
     def __init__(self, *args, **kwargs):
         super(KITTIDataset, self).__init__(*args, **kwargs)
 
-        self.K = np.array([[0.58, 0, 0.5, 0],
-                           [0, 1.92, 0.5, 0],
-                           [0, 0, 1, 0],
+        self.K = np.array([[ 1.2980204791850110e+03, 0., 4.0380962753295898e+02, 0.],
+                           [ 0., 1.2980204791850110e+03, 1.4585454940795898e+02, 0.],
+                           [0., 0., 1., 0.],
                            [0, 0, 0, 1]], dtype=np.float32)
 
-        self.full_res_shape = (1242, 375)
+        self.full_res_shape = (800, 320)
         self.side_map = {"2": 2, "3": 3, "l": 2, "r": 3}
 
     def check_depth(self):
