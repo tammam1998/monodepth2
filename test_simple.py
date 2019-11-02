@@ -34,6 +34,7 @@ def parse_args():
                         choices=[
                             "mono_640x192",
                             "stereo_640x192",
+                            "stereo_800x320",
                             "mono+stereo_640x192",
                             "mono_no_pt_640x192",
                             "stereo_no_pt_640x192",
