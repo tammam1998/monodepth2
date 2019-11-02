@@ -154,11 +154,12 @@ class MonoDataset(data.Dataset):
             side = None
 
         for i in self.frame_idxs:
-            # if i == "s":
-            #     other_side = {"r": "l", "l": "r"}[side]
-            #     inputs[("color", i, -1)] = self.get_color(folder, frame_index, other_side, do_flip)
-            # else:
-            inputs[("color", i, -1)] = self.get_color(folder, frame_index + i, side, do_flip)
+            if i == "s":
+                folder = {"right" : "left", "left" : "right"}[folder]
+                other_side = {"r": "l", "l": "r"}[side]
+                inputs[("color", i, -1)] = self.get_color(folder, frame_index, other_side, do_flip)
+            else:
+                inputs[("color", i, -1)] = self.get_color(folder, frame_index + i, side, do_flip)
 
         # adjusting intrinsics to match each scale in the pyramid
         for scale in range(self.num_scales):
