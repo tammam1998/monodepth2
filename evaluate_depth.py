@@ -21,7 +21,7 @@ splits_dir = os.path.join(os.path.dirname(__file__), "splits")
 # Models which were trained with stereo supervision were trained with a nominal
 # baseline of 0.1 units. The KITTI rig has a baseline of 54cm. Therefore,
 # to convert our stereo predictions to real-world scale we multiply our depths by 5.4.
-STEREO_SCALE_FACTOR = 5.4
+STEREO_SCALE_FACTOR = 1
 
 
 def compute_errors(gt, pred):
@@ -59,8 +59,8 @@ def batch_post_process_disparity(l_disp, r_disp):
 def evaluate(opt):
     """Evaluates a pretrained model using a specified test set
     """
-    MIN_DEPTH = 1e-3
-    MAX_DEPTH = 80
+    MIN_DEPTH = 1
+    MAX_DEPTH = 40
 
     assert sum((opt.eval_mono, opt.eval_stereo)) == 1, \
         "Please choose mono or stereo evaluation by setting either --eval_mono or --eval_stereo"
